@@ -1,0 +1,127 @@
+body {
+    background-color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    color: gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    max-height: 100vh;
+
+
+}
+
+h1 {
+    color: wheat;
+}
+
+#playField {
+    display: flex;
+    background-color: rgb(19, 19, 22);
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 15px;
+    width: 80%;
+    height: 80vh;
+    margin-bottom: 50px;
+    
+} 
+
+#player1Field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 15px;
+    width: 30%;
+    height: 70%;
+}
+#diceField {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid white;
+    border-radius: 15px;
+    width: 30%;
+    height: 70%;
+    
+}
+#diceSpace{
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    height: 20%;
+}
+
+#diceImag {
+    display: flex;
+    box-sizing: border-box;
+}
+
+/* Buttons */
+#newGame{
+    background-color: black;
+    color: wheat;
+}
+
+#newGame:hover {
+    cursor:pointer;
+   }
+
+#roll{
+    background-color: black;
+    color: wheat;
+}
+#roll:hover {
+    cursor:pointer;
+   }
+
+#hold{
+    background-color: black;
+    color: wheat;
+}
+
+#hold:hover {
+    cursor:pointer;
+   }
+
+
+
+
+
+#player2Field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 15px;
+    width: 30%;
+    height: 70%;
+}
+
+#totalScorePlayer1 {
+    font-size: 20px;
+    color: red;
+    opacity: 0;
+}
+
+
+
+#totalScorePlayer2 {
+    font-size: 20px;
+    color: red;
+    opacity: 0;
+}
+
+#currentPlayer {
+    opacity: 0;;
+}
