@@ -1,4 +1,5 @@
 
+// Dom varioables
 const diceImage = document.getElementById("diceImage");
 const diceSpace = document.getElementById("diceSpace");
 const roll = document.getElementById("roll");
@@ -31,7 +32,7 @@ let totalPlayer2 = 0;
 let finalScore1 = 0;
 let finalScore2 = 0;
 playing = true;
-result = null;
+
 
 // Random function which chosing random number for the dice roll between 1 - 6
 const randomDice = () => {
@@ -39,170 +40,45 @@ const randomDice = () => {
     return randomNumber;
 }
 
-// Cube picture function. If random number is chosen picture of the dice is changed
+// Cube picture function. If random number is chosen picture of the dice is changed. Parameter is randomnumber
+// And number string word is from the class value where key is integer number
 const displayCube = (randomNumber) => {
     diceImage.src = `./images/dice-six-faces-${classNumbers[randomNumber]}.png`;
     diceSpace.style.opacity = '1';
 }
 
-// *****************************************************************************
-// Function to check the resunt of the game
-// const resultCondition = () => {
-//     {
-//         if (totalPlayer2 > totalPlayer1) {
-//             messageField.textContent = `Player 2 wins 🏆`;
-//             border2.style.border = '2px solid yellow';
-
-//         } else if (totalPlayer2 === totalPlayer1){
-//             messageField.textContent = `DRAW ⚡`;
-//             border1.style.border = '2px solid green'; 
-//             border2.style.border = '2px solid green';  
-
-//         } else 
-//         if (totalPlayer1 > 21) {
-//             messageField.textContent = `Player 1 wins 🏆`;
-//             border1.style.border = '2px solid yellow';
-
-//         } else if (totalPlayer2 > 21) {
-//             messageField.textContent = `Player 1 wins 🏆`;
-//             border2.style.border = '2px solid yellow';    
-
-//         }else {messageField.textContent = `Player 1 wins 🏆`;
-//             border1.style.border = '2px solid yellow';
-//         }
-//         // After result check roll buton is being disabled
-//         roll.setAttribute("disabled", "");
-// }
-// }
-
-
-// const switchPlayer = (choice) => {
-//     const player1 = () => {
-//         score = randomDice();
-//         displayCube(score);
-//         messageField.textContent = `PLAYER 1`;
-//         score1 = score;
-//         displayCube(score1);
-//         // Total is counted by adding score 
-//         totalPlayer1 += score1;
-//         diceScorePlayer1.textContent = totalPlayer1;
-//         // Hold button. If pressed total score is saved. Player 1 can't playe
-//         // anymore. Player 2 turn
-//         hold.addEventListener('click', () =>{
-//             const finalScore1 = totalPlayer1;
-//             totalScorePlayer1.textContent = finalScore1;
-//             totalScorePlayer1.style.opacity = '1';
-//             messageField.textContent = `PLAYER 2`;
-//             // playing is changed to false so player 2 turn
-//             playing = false;
-//             border1.style.border = '1px solid white';
-//             border2.style.border = '2px solid red';
-//         } 
-        
-//         ) 
-        
-//         if (score1 === 1) {
-//             // If dice score is 1 result is reseted to 0
-//             // and player can't play anymore
-//             totalPlayer1 = 0;
-//             totalScorePlayer1.textContent = 0;
-//             diceScorePlayer1.textContent = 0;
-//             totalScorePlayer1.style.opacity = '1';
-//             messageField.textContent = `PLAYER 2`;
-//             playing = false;
-//             border1.style.border = '1px solid white';
-//             border2.style.border = '2px solid red';
-//         }
-//     }
-
-//     const player2 = () => {
-//         score = randomDice();
-//         displayCube(score);
-//         score2 = score;
-//         displayCube(score2);
-//         totalPlayer2 += score2;
-//         diceScorePlayer2.textContent = totalPlayer2;
-
-//         hold.addEventListener('click', () =>{
-//             const finalScore2 = totalPlayer2;
-//             totalScorePlayer2.textContent = finalScore2;
-//             totalScorePlayer2.style.opacity = '1';
-//             if (totalScorePlayer1.style.opacity === '1' && totalScorePlayer2.style.opacity === '1');
-//             // Result condition check
-//             {resultCondition()};
-
-//         } 
-        
-//         ) 
+// Roll button will be disactvated so player can't play anymore
+const disactivateButton = () => {
+    roll.setAttribute("disabled", "");
     
-//         if (score2 === 1) {
-//             totalPlayer2 = 0;
-//             totalScorePlayer2.textContent = 0;
-//             diceScorePlayer2.textContent = 0;
-//             totalScorePlayer2.style.opacity = '1';
-//             // Result condition check
-//             resultCondition();
-//         }
-        
-//     }
-//     // If pareamter is 1 in switch function player 1 is playing
-//     // else player2
-//     if (choice === 1) {    
-//         border1.style.border = '2px solid red';
-//         player1();
-//     }
-    
-//     else{
-//         player2(); 
-//     }
+}
 
 
-// }   
-    
-
-// // New game function with the condition. If playing = true player 1 is playing. Else 
-// // player 2 turn
-// const newGame = () => {
-//     roll.addEventListener('click', () => {
-//         messageField.style.opacity = '1';
-//         if (playing) {     
-//             switchPlayer(1);
-//         } else {
-            
-//             switchPlayer(2);          
-//         }
-//     })
-// }
-
-// newGame();
-
-// // Reset button which is refreshing the page
-// resetBtn.addEventListener('click', () => {
-//     location.reload();
-// })
-
-// **********************************************************************
-
+// Result resultCondition. If score one of the players will be greater than 20 player wins
 
 const resultCondition = () => {
     {
-        if (finalScore1 > 21 && finalScore1 > finalScore2 ) {
+        if (finalScore1 > 20 && finalScore1 > finalScore2 ) {
             messageField.textContent = `Player 1 wins 🏆`;
             border1.style.border = '2px solid yellow';
-            roll.setAttribute("disabled", "");
+            disactivateButton()
 
-        } else if (finalScore2 > 21 && finalScore2 > finalScore1) {
+        } else if (finalScore2 > 20 && finalScore2 > finalScore1) {
             messageField.textContent = `Player 2 wins 🏆`;
             border2.style.border = '2px solid yellow';
-            roll.setAttribute("disabled", "");   
+            disactivateButton()
+             
         } 
 
-        // After result check roll buton is being disabled
-        
+               
 }
 }
 
-
+// Function to swich players. If playing = true player 1 rolls. Else player 2 turn
+// Player can roll as many tines as he want but if he will get 1 result will be reseted to 0
+// Player can press hold any time to save the current score and let player 2 to play
+// Player wins if score will be greater than 20. But player have to press hold to and the game and win if result is over 20
+// Player 1 start the game
 const switchPlayer = () => {
         if (playing) {
             border1.style.border = '1px solid red';
@@ -211,47 +87,55 @@ const switchPlayer = () => {
             messageField.textContent = `PLAYER 1`;
             score1 = score;
             displayCube(score1);
-            // Total is counted by adding score 
+            // Total is counted by adding score of rice rolls
             totalPlayer1 += score1;
             diceScorePlayer1.textContent = totalPlayer1;
-            // Hold button. If pressed total score is saved. Player 1 can't playe
-            // anymore. Player 2 turn
+            // If dice score is 1 result is reseted to 0
+            
 
             if (score1 === 1) {
                 // If dice score is 1 result is reseted to 0
-                // and player can't play anymore
                 totalPlayer1 = 0;
                 totalScorePlayer1.style.opacity = '1';
                 totalScorePlayer1.textContent = finalScore1;
                 diceScorePlayer1.textContent = 0;
                 messageField.textContent = `PLAYER 2`;
+                // Condition playing = false so player 2 turn
                 playing = false;
                 border1.style.border = '1px solid white';
                 border2.style.border = '2px solid red';
             }
         } else {
+
             score = randomDice();
             displayCube(score);
             score2 = score;
             displayCube(score2);
+            // Total is counted by adding score of rice rolls
             totalPlayer2 += score2;
             diceScorePlayer2.textContent = totalPlayer2
+            
+
+
+            // If dice score is 1 result is reseted to 0
             if (score2 === 1) {
+                // If dice score is 1 result is reseted to 0
                 totalPlayer2 = 0;
                 totalScorePlayer2.style.opacity = '1';
                 totalScorePlayer2.textContent = finalScore2;
                 diceScorePlayer2.textContent = 0;
                 messageField.textContent = `PLAYER 1`;
+                // Condition playing = true so player 1 turn
                 playing = true;
                 border1.style.border = '1px solid red';
-                border2.style.border = '2px solid white';
-                // Result condition check
-                
+                border2.style.border = '2px solid white';      
             }
         }
            
     }
 
+
+// Hold button. If player press hold current score is saved and added to total score if player have any saved score
 hold.addEventListener('click', () =>{
     if (playing) {
         finalScore1 += totalPlayer1;
@@ -259,11 +143,12 @@ hold.addEventListener('click', () =>{
         diceScorePlayer1.textContent = 0;
         totalScorePlayer1.textContent = finalScore1;
         totalScorePlayer1.style.opacity = '1';
-        // playing is changed to false so player 2 turn
         border1.style.border = '1px solid white';
         border2.style.border = '2px solid red';
         messageField.textContent = `PLAYER 2`;
+        // result condition check
         resultCondition();
+        // Condition playing = false so player 2 turn
         playing = false;
     }
         
@@ -274,11 +159,12 @@ hold.addEventListener('click', () =>{
         diceScorePlayer2.textContent = 0;
         totalScorePlayer2.textContent = finalScore2;
         totalScorePlayer2.style.opacity = '1';
-        // Result condition check
         border1.style.border = '1px solid red';
         border2.style.border = '2px solid white';
         messageField.textContent = `PLAYER 1`;
+        // result condition check
         resultCondition();
+        // Condition playing = true so player 1 turn
         playing = true;
 
     }
@@ -286,8 +172,7 @@ hold.addEventListener('click', () =>{
 })
 
 
-// New game function with the condition. If playing = true player 1 is playing. Else 
-// player 2 turn
+// New game function. If roll is pressed "Player 1" message is displayed. So player 1 start the game
 const newGame = () => {
     roll.addEventListener('click', () => {
         switchPlayer()
@@ -297,13 +182,12 @@ const newGame = () => {
 
 newGame();
 
-// Reset button which is refreshing the page
+// Reset button which is refreshing the page and reseting all scores
 resetBtn.addEventListener('click', () => {
     location.reload();
 })
 
     
-
 
 
 
